@@ -1,0 +1,3 @@
+github.com/glennsarti/jsonrpc-protocol-for-go v0.0.0-20210529125528-9dc645b88858 h1:2Eo1Jgon+ECs/aHdjOxVDw0ORQLkfrqOQrGMNXFrMtw=
+github.com/glennsarti/jsonrpc-protocol-for-go v0.0.0-20210529125528-9dc645b88858/go.mod h1:L73VVFtN+8cFqdWCn3/eUvGdJWioARbKLnAMkJJf0S4=
+golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1/go.mod h1:I/5z698sn9Ka8TeJc9MKroUUfqBBauWjQqLJ2OPfmY0=

@@ -1,0 +1,8 @@
+/node_modules
+/tmp
+
+/out
+/work
+
+# Normally this would be checked in, but in our case, we want the latest.
+package-lock.json

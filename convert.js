@@ -4,6 +4,7 @@ if (process.argv.length >= 3) { flags = process.argv[2] }
 const path = require('path');
 const fs = require('fs');
 const { spawnSync } = require('child_process');
+const { stringify } = require('querystring');
 
 console.log('Running the build process...');
 
@@ -16,6 +17,7 @@ const tscInDir = path.join(rootPath, 'typescript')
 const tscOutDir = path.join(rootPath, 'out')
 const workDir = path.join(rootPath, 'work')
 const outDir = path.join(rootPath, 'protocol')
+const staticDir = path.join(rootPath, 'static')
 
 // Recursively delete a directory
 function rmdirRecurse(dir) {
@@ -107,6 +109,16 @@ try {
   process.chdir(cwd)
 }
 
+// Copy static files
+fs.readdirSync(staticDir, { withFileTypes: true }).forEach((entry) => {
+  if (entry.name.endsWith('_go.txt')) {
+    const srcPath = path.join(staticDir, entry.name);
+    const dstPath = path.join(workDir, entry.name.replace('_go.txt', '.go'));
+    console.log(`⏳ Copying static file ${srcPath}...`)
+    fs.copyFileSync(srcPath, dstPath);
+  }
+});
+
 // Format it
 console.log("⏳ Formatting the output Go files...")
 runCommand(`gofmt -w ${path.join(workDir, 'ts*.go')}`)
@@ -115,5 +127,8 @@ runCommand(`gofmt -w ${path.join(workDir, 'ts*.go')}`)
 if (fs.existsSync(outDir)) { rmdirRecurse(outDir) }
 console.log("Copying files to output directory...")
 copyDirRecurse(workDir, outDir)
+
+// Purge the work directory
+rmdirRecurse(workDir)
 
 console.log("👍 Done")

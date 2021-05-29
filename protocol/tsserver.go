@@ -7,7 +7,7 @@ package protocol
 // Package protocol contains data types and code for LSP jsonrpcs
 // generated automatically from vscode-languageserver-node
 // commit: d58c00bbf8837b9fd0144924db5e7b1c543d839e
-// last fetched Thu May 27 2021 12:54:54 GMT+0000 (Coordinated Universal Time)
+// last fetched Sat May 29 2021 14:03:33 GMT+0000 (Coordinated Universal Time)
 
 // Code generated (see typescript/README.md) DO NOT EDIT.
 
@@ -15,7 +15,7 @@ import (
 	"context"
 	"encoding/json"
 
-	"golang.org/x/tools/internal/jsonrpc2"
+	"github.com/glennsarti/jsonrpc-protocol-for-go/jsonrpc2"
 	errors "golang.org/x/xerrors"
 )
 
